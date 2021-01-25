@@ -1,0 +1,98 @@
+#:kivy 1.11.1 
+#:import get_color kivy.utils.get_color_from_hex
+#:set blue get_color("#0096fb")
+#:set grey get_color("#585858")
+
+
+<AppBar@BoxLayout>:
+	size_hint: 1, None
+	height: "60dp" 
+	pos_hint: {"top": 1}
+	padding: "10dp" 
+	spacing: "10dp" 
+	canvas.before:
+		Color:
+			rgba: 0, 0, 0, .4 
+		BorderImage:
+			source: "images/shadow32.png"
+			border: dp(36), dp(36), dp(36), dp(36) 
+			size: dp(self.width + 72), dp(self.height + 72) 
+			pos: self.x - 36, self.y - 32 
+		Color:
+			rgb: blue 
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+<HomePage>:
+
+	AppBar:
+		Label:
+			text: "Kivy Demo Home Page"
+			font_size: "18sp" 
+	
+	FloatLayout:
+		Label:
+			text: "You have pushed the button this many times:"
+			color: 0, 0, 0, 1 
+			size_hint: 1, .1
+			pos_hint: {"center_x": .5, "center_y": .5}
+			font_size: "16sp"
+		Label:
+			id: counter
+			text: "0" 
+			font_size: "40sp"
+			size_hint: 1, .1
+			pos_hint: {"center_x": .5, "center_y": .44}
+			color: 0, 0, 0, 1
+			markup: True
+	
+	AnchorLayout:
+		anchor_x: "right"
+		anchor_y: "bottom"
+		padding: 0, 0, dp(30), dp(30)
+		Button:
+			on_release: root.increment_counter() 
+			markup: True
+			text: "[size=20sp]+[/size]"
+			background_color: 1, 0, 0, 0 
+			color: 1, 1, 1, 1
+			size_hint: None, None
+			size: dp(60), dp(60)
+
+			canvas.before:
+				Color:
+					rgba: 0, 0, 0, .4 
+				BorderImage:
+					source: "images/shadow_circle.png"
+					size: self.width + 38, self.height + 38 
+					pos: self.x - 18, self.y - 19 
+				Color:
+					rgba: blue if self.state == "normal" else grey 
+				RoundedRectangle:
+					radius: [60,]
+					pos: self.pos
+					size: self.size
+					
+
+HomePage:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+title=Kivy Demo Home Page 
+author=Josileno Bezerra do Nascimento
+orientation=portrait
